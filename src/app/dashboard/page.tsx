@@ -3,6 +3,7 @@ import { headers } from "next/headers"
 import { redirect } from "next/navigation"
 import LogoutButton from "./logout_button"
 import { Table, TableBody, TableCaption, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
+export const dynamic = 'force-dynamic'
 
 export default async function Page() {
   const session = await auth.api.getSession({
@@ -15,6 +16,8 @@ export default async function Page() {
 
 
   const response = await fetch(`${process.env.API_URL}/candidates`, {
+    cache: 'no-cache',
+    next: { revalidate: 0 },
     headers: {
       'x-api-key': process.env.API_SECRET ?? '',
     }
