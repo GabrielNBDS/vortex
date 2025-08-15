@@ -15,9 +15,6 @@ export default async function Page() {
 
 
   const response = await fetch(`${process.env.API_URL}/candidates`, {
-    next: {
-      revalidate: 5,
-    },
     headers: {
       'x-api-key': process.env.API_SECRET ?? '',
     }
