@@ -2,7 +2,7 @@
 
 export const apply = async (email: string) => {
   try {
-    fetch(process.env.API_URL + "/candidates", {
+    await fetch(process.env.API_URL + "/candidates", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
